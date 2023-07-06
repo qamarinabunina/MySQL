@@ -1,0 +1,3 @@
+SELECT fname, lname, patronus 
+FROM characters 
+WHERE patronus IS NOT NULL; 
