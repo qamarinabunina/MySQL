@@ -1,6 +1,6 @@
 SELECT fname, lname, patronus 
 FROM characters 
-WHERE patronus IS NOT NULL; 
+WHERE NOT patronus = 'unknown' AND patronus IS NOT NULL; 
 
 SELECT * FROM characters 
 WHERE lname LIKE '%e'; 
