@@ -1,3 +1,85 @@
 SELECT fname, lname, patronus 
 FROM characters 
 WHERE patronus IS NOT NULL; 
+
+SELECT * FROM characters 
+WHERE lname LIKE '%e'; 
+
+SELECT SUM(age) AS total_age
+FROM characters;
+
+SELECT fname, lname, age 
+FROM characters 
+ORDER BY age DESC;
+
+SELECT fname, lname, age 
+FROM characters
+WHERE age BETWEEN 50 AND 100; 
+
+SELECT DISTINCT age 
+FROM characters;
+
+SELECT * FROM characters 
+WHERE faculty = ('Gryffindor') AND (age >30);
+
+SELECT DISTINCT faculty 
+FROM characters 
+LIMIT 3;
+
+SELECT * FROM characters
+WHERE fname LIKE ('H____')
+OR fname LIKE ('L%'); 
+
+SELECT AVG(age) AS avg_age FROM characters;
+
+DELETE FROM characters 
+WHERE char_id = 11; 
+
+SELECT * FROM characters 
+WHERE lname LIKE ('%a%'); 
+
+SELECT fname AS 'Half_Blood_Prince'
+FROM characters
+WHERE fname = 'Severus'; 
+
+SELECT char_id, patronus 
+FROM characters 
+WHERE NOT patronus = 'unknown'
+ORDER BY patronus ASC;
+
+SELECT fname, lname
+FROM characters 
+WHERE lname IN ('Crabbe')
+OR lname IN ('Grandger')
+OR lname IN ('Diggory')
+
+SELECT MIN(age) AS smaller_age
+FROM characters; 
+
+SELECT fname FROM characters
+UNION
+SELECT book_nane FROM library; 
+
+SELECT COUNT(char_id), faculty 
+FROM characters
+GROUP BY faculty 
+HAVING COUNT(char_id) > 1; 
+
+SELECT fname, lname,
+CASE WHEN faculty='Gryffindor' THAN 'Godric'
+WHEN faculty='Slytherin' THAN 'Salazar'
+WHEN faculty='Ravenclaw' THAN 'Rowena'
+WHEN faculty='Hufflepuff' THAN 'Helga'
+ELSE 'Muggle'
+END AS Founders 
+FROM characters;
+
+SELECT lname
+FROM characters
+WHERE lname NOT LIKE 'L%'
+AND lname NOT LIKE 'H%'
+AND lname NOT LIKE 'S%'; 
+
+SELECT lname 
+FROM characters
+WHERE lname NOT REGEXP '^[S,H,L].*'; 
