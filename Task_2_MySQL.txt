@@ -1,0 +1,36 @@
+SELECT characters.fname, characters.lname, library.book_name
+FROM characters
+INNER JOIN library 
+ON characters.char_id=library.char_id; 
+
+SELECT characters.fname, characters.lname, library.book_name
+FROM characters
+INNER JOIN library 
+ON characters.book_id=library.book_id;
+
+SELECT characters.patronus, library.book_name
+FROM characters
+INNER JOIN library 
+ON characters.book_id=library.book_id;
+
+SELECT characters.fname, characters.lname, characters.age, library.book_name
+FROM characters
+INNER JOIN library 
+ON characters.char_id=library.char_id
+WHERE age>15;
+
+SELECT characters.fname, library.book_name, library.start_date, library.end_date
+FROM characters
+INNER JOIN library 
+ON characters.book_id=library.book_id
+WHERE age<15 AND NOT patronus="unknown";
+
+SELECT COUNT(*) AS new_sum
+FROM library
+WHERE end_date > (SELECT end_date FROM library INNER JOIN characters
+ON characters.char_id=library.char_id
+WHERE fname = 'Hermione'); 
+
+SELECT patronus 
+FROM characters 
+WHERE age > (SELECT age FROM characters EHERE patronus = 'unknown'); 
